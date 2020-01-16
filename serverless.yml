@@ -1,0 +1,17 @@
+service: mock-degradation
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-offline
+
+functions:
+  proxy:
+    handler: handler.proxy
+    timeout: 30
+    events:
+      - http:
+          path: /
+          method: any
